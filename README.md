@@ -7,4 +7,4 @@ Minimal implementation of [transformer-encoder for text classification](https://
 - Encoder, decoder, and ViT models, with shared modules as much as possible,
 - Training and evaluation, common for all three tasks.
 
-.ipynb files minimally illustrate the training and evaluation of models by using [toy datasets](https://github.com/u84819482/Nano-transformer/tree/main/training%20data)(including MNIST for ViT) and small transformers. However, the code in .py file should allow training large models on serious datasets as well.
+.ipynb files minimally illustrate the training and evaluation of models by using [toy datasets](https://github.com/u84819482/Nano-transformer/tree/main/training%20data) (including MNIST for ViT) and small transformers. However, the code in .py file should allow training large models on serious datasets as well.
