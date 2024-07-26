@@ -1,10 +1,10 @@
-# ## 1) TOKENIZERS
+# 1) TOKENIZERS
 
 import re #python module to support functions like match, search, split
 import tiktoken #library to implement BPE tokenizer
 
 
-# ### 1.1) Forming simple word-level and character-level vocabularies
+# 1.1) Forming simple word-level and character-level vocabularies
 
 def make_word_level_vocabulary(raw_text):
     """ Generates a word-level vocabulary (dictionary with keys = words, vals = integers) 
@@ -42,7 +42,7 @@ def make_char_level_vocabulary(raw_text):
     
     return vocab
 
-# ### 1.2) Word-level, character-level, and BPE tokenizers
+# 1.2) Word-level, character-level, and BPE tokenizers
 
 class WordTokenizer: 
     """Encodes words to integers and decodes integers to words based 
@@ -125,7 +125,7 @@ class BPETokenizer():
         return self.tokenizer.decode(ids)
 
 
-# ## 2) DATASETS
+# 2) DATASETS
 
 from torch.utils.data import Dataset, DataLoader
 import pandas as pd
@@ -142,7 +142,7 @@ def print_two_batches(dataloader):
             break
 
 
-# ### 2.1) Text generation dataset
+# 2.1) Text generation dataset
 
 class TextGenDataset(Dataset):     
     """Takes a training text and creates input/target ID pairs, which are accessible by index.
@@ -173,7 +173,7 @@ class TextGenDataset(Dataset):
         return self.input_ids[idx], self.target_ids[idx]
 
 
-# ### 2.2) Text classification dataset
+# 2.2) Text classification dataset
 
 class TextClassDataset(Dataset):
     
@@ -202,13 +202,13 @@ class TextClassDataset(Dataset):
         return torch.tensor(encoded, dtype=torch.long), torch.tensor(label, dtype=torch.long)
 
 
-# ### 2.3) Image classification dataset
+# 2.3) Image classification dataset
 
 # Just use one of the classes from torchvision.datasets. Those work without problem accross versions, unlike torchtext classes.
 
-# ## 3) MODELS
+# 3) MODELS
 
-# ### 3.1) Embeddings
+#  3.1) Embeddings
 
 import torch
 import torch.nn as nn
@@ -313,7 +313,7 @@ class ImageEmbeddings(nn.Module):
         return x 
 
 
-# ### 3.2) Transformer blocks
+# 3.2) Transformer blocks
 
 class MHA(nn.Module): #for encoder, no masking
     def __init__(self, d, nh, dpo): #No Nmax
@@ -537,7 +537,7 @@ class TransformerBlockDecoder(nn.Module):
         return x
 
 
-# ### 3.3) Final classes combining embeddings, transformer blocks, and output heads
+# 3.3) Final classes combining embeddings, transformer blocks, and output heads
 
 class TransformerEncoder(nn.Module): 
     def __init__(self, d, Nmax, nh, L, len_vocab, dpo, num_classes):
@@ -607,9 +607,9 @@ class VisionTransformer(nn.Module):
         return logits
 
 
-# ## 4) TRAIN / EVALUATE / GENERATE: Single set for all transformers/tasks
+# 4) TRAIN / EVALUATE / GENERATE: Single set for all transformers/tasks
 
-# ### 4.1) Supporting functions
+# 4.1) Supporting functions
 
 from tqdm.notebook import trange, tqdm
 import matplotlib.pyplot as plt
@@ -658,7 +658,7 @@ def plot_losses(train_losses, val_losses, train_acc, val_acc, plot, val=True):
         plt.show();
 
 
-# ### 4.2) Main functions
+# 4.2) Main functions
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
