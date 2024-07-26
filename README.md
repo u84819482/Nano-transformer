@@ -8,3 +8,8 @@ Minimal implementation of [transformer-encoder for text classification](https://
 - Training and evaluation, common for all three tasks.
 
 .ipynb files minimally illustrate the training and evaluation of models by using [toy datasets](https://github.com/u84819482/Nano-transformer/tree/main/training%20data) (including MNIST for ViT) and small transformers. However, the code in .py file should allow training large models on serious datasets as well.
+
+References:
+- https://github.com/rasbt/LLMs-from-scratch
+- https://github.com/karpathy/nanoGPT
+- https://github.com/tintn/vision-transformer-from-scratch
